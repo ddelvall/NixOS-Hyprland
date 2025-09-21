@@ -16,7 +16,13 @@
       portalPackage = pkgs.xdg-desktop-portal-hyprland; # xdph none git
       xwayland.enable = true;
     };
-    zsh.enable = true;
+    zsh = {
+      enable = true;
+      shellAliases = {
+        vi = "nvim";
+        vim = "nvim";
+      };
+    };
     firefox.enable = true;
     waybar.enable = true;
     hyprlock.enable = true;
@@ -33,7 +39,7 @@
     nm-applet.indicator = true;
     neovim = {
       enable = true;
-      defaultEditor = false;
+      defaultEditor = true;
     };
 
     thunar.enable = true;
@@ -115,7 +121,7 @@
     glib # for gsettings to work
     gsettings-qt
     git
-    google-chrome
+#    google-chrome
     gnome-system-monitor
     fastfetch
     jq

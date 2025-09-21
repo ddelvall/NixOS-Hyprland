@@ -24,12 +24,15 @@ in
     ../../modules/intel-drivers.nix
     ../../modules/vm-guest-services.nix
     ../../modules/local-hardware-clock.nix
+    ../../modules/game-dev.nix
   ];
 
   # BOOT related stuff
   boot = {
     kernelPackages = pkgs.linuxPackages_zen; # zen Kernel
     #kernelPackages = pkgs.linuxPackages_latest; # Kernel
+
+    supportedFilesystems = [ "ntfs" ];
 
     kernelParams = [
       "systemd.mask=systemd-vconsole-setup.service"
@@ -107,6 +110,13 @@ in
   #  theme = "nixos";
   #};
 
+  # NTFS support
+  fileSystems."/media/data" = {
+    device = "/dev/sda2";
+    fsType = "ntfs-3g";
+    options = [ "rw" "uid=1000" ];
+  };
+
   # Extra Module Options
   drivers = {
     amdgpu.enable = true;
@@ -121,6 +131,9 @@ in
   vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
 
+  # Game Development
+  game-dev.enable = true;
+
   # networking
   networking = {
     networkmanager.enable = true;
@@ -132,7 +145,6 @@ in
   services.automatic-timezoned.enable = true; # based on IP location
 
   #https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  #time.timeZone = "Asia/Seoul"; # Set local timezone
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -345,7 +357,7 @@ in
     enable = true;
   };
 
-  console.keyMap = "${keyboardLayout}";
+  console.keyMap = "us";
 
   # For Electron apps to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

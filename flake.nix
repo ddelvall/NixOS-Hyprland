@@ -1,5 +1,5 @@
 {
-  description = "KooL's NixOS-Hyprland";
+  description = "KooL's NixOS-Hyprland for Banholio";
 
   inputs = {
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
@@ -31,8 +31,8 @@
     }:
     let
       system = "x86_64-linux";
-      host = "default";
-      username = "dwilliams";
+      host = "hyrule";
+      username = "banholio";
 
       pkgs = import nixpkgs {
         inherit system;
