@@ -110,13 +110,6 @@ in
   #  theme = "nixos";
   #};
 
-  # NTFS support
-  fileSystems."/media/data" = {
-    device = "/dev/sda2";
-    fsType = "ntfs-3g";
-    options = [ "rw" "uid=1000" ];
-  };
-
   # Extra Module Options
   drivers = {
     amdgpu.enable = true;
@@ -213,6 +206,7 @@ in
     nfs.server.enable = false;
 
     openssh.enable = true;
+
     flatpak.enable = false;
 
     blueman.enable = true;

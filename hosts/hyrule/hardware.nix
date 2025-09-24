@@ -29,6 +29,22 @@
       fsType = "ext4";
     };
 
+  # Sabrent NVME
+  fileSystems."/media/shared" =
+    { device = "/dev/nvme0n1p1";
+      fsType = "ext4";
+    };
+
+  # WD HDD
+  fileSystems."/media/data" =
+    { device = "/dev/sda2";
+      fsType = "ntfs-3g";
+      options = [ "rw" "uid=1000"];
+    };
+
+
+
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

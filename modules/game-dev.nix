@@ -12,6 +12,8 @@
       blender-hip
       aseprite
       pixelorama
+      zed-editor
+      jetbrains.rider
     ];
   };
 }

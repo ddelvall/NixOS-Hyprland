@@ -19,6 +19,7 @@ in
   environment.systemPackages =
     (with pkgs; [
       # System Packages
+      ntfs3g
 
       fastfetch
 
@@ -35,6 +36,8 @@ in
       lutris
       bottles
       heroic
+
+      vlc
     ])
     ++ [
       python-packages 
@@ -48,6 +51,7 @@ in
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
     };
+
   };
   
   services.udev.packages = [ pkgs.headsetcontrol ];
